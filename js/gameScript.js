@@ -5,6 +5,7 @@ canvasWidth = 800;
 canvasHeight = 600;
 angryburgers = new Array();
 keyObjects = new Array(255);
+kogels = [];
 
 for (i = 0; i< keyObjects.length; i++) {
     keyObjects[i] = false;
@@ -19,11 +20,11 @@ function keyUpHandler(event) {
     keyObjects[event.keyCode] = false;
 }
 
-
 for (i = 0; i < 5; i++) {
     let hamburger = new Sprite((Math.floor(Math.random() * 750)), 0, 0, (Math.floor(Math.random() * 10) + 1), 50, 50, "./img/angryBurger.png");
     angryburgers.push(hamburger);
 }
+
 function start() {
     let volgende;
     (function gameloop(timestamp){
@@ -53,12 +54,10 @@ function init() {
 function update() {
     if (keyObjects[39] == true || keyObjects[68] == true) {
         if (sprite1.X <= 630) {
-            sprite1.rotation += 0.1;
             sprite1.X += 5;
         }
     } else if (keyObjects[37] == true || keyObjects[65] == true) {
         if (sprite1.X > -20) {
-            sprite1.rotation -= 0.1;
             sprite1.X -= 5;
         }
     }
